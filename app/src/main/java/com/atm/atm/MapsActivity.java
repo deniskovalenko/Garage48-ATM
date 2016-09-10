@@ -18,8 +18,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-//import com.google.android.gms.maps.model.Marker;
-//import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -41,8 +41,8 @@ public class MapsActivity extends FragmentActivity implements
     LocationRequest mLocationRequest;
     boolean mRequestingLocationUpdates = false;
 
-    //List<Event> events = new ArrayList<>();
-    //List<Marker> markers = new ArrayList<>();
+    List<Event> events = new ArrayList<>();
+    List<Marker> markers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,20 +113,13 @@ public class MapsActivity extends FragmentActivity implements
         location_two.setLatitude(latLng_two.latitude);
         location_two.setLongitude(latLng_two.longitude);
 
-        /*while (mLastLocation == null) {
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        }*/
-
-        /*
         Event one = new Event(
                 "Join us and lets throw the greatest party ever!!",
                 latLng_one,
                 "100000090836482",
                 "Juku",
                 "http://kippure.com/img/party-venue-wicklow.jpg",
-                "#party",
-                //Math.round(mLastLocation.distanceTo(location_one))
-                1
+                "#party"
         );
         events.add(one);
         Event two = new Event(
@@ -135,11 +128,9 @@ public class MapsActivity extends FragmentActivity implements
                 "10000009083612",
                 "Tim",
                 "http://naibuzz.com/wp-content/uploads/2014/08/boring-party.jpg",
-                "#killme",
-                //Math.round(mLastLocation.distanceTo(location_two))
-                1
+                "#killme"
         );
-        events.add(two);*/
+        events.add(two);
 
         /*for (Event e : events) {
             BitmapDescriptor icon;

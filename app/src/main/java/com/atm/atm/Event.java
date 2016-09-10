@@ -1,6 +1,6 @@
 package com.atm.atm;
 
-//import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Event {
-    /*String id;
+    String id;
     String description;//user input
     LatLng latLng;//automatically sent as argument
     double lat;
@@ -20,11 +20,11 @@ public class Event {
     String host_img_url;
     String img_url;//automatically uploaded by the backend, sent as argument
     String hashtag;//user input
-    int distance; //automatically calculated and rounded in MapsActivity, sent as argument
+    int distance; //TODO recalculated upon location update Math.round(mLastLocation.distanceTo(location_one)
     int participants_count;
     List<String> participants;
 
-    Event(String desc, LatLng location, String creator_id, String creator_name, String url, String tag, int dist) {
+    Event(String desc, LatLng location, String creator_id, String creator_name, String url, String tag) {
         id = UUID.randomUUID().toString();
         description = desc;
         latLng = location;
@@ -37,9 +37,8 @@ public class Event {
         host_img_url = "https://graph.facebook.com/" + host_id + "/picture?width=128&height=128";
         img_url = url;
         hashtag = tag;
-        distance = dist;
         participants_count = 1;
         participants = new ArrayList<>();
         participants.add(host_id);
-    }*/
+    }
 }
