@@ -1,4 +1,4 @@
-package com.atm.atm;
+package com.atm.atm.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
                        /* textViewInfo.setText("User Name  " +
                                 loginResult.getAccessToken().getUserId() + "\n" +
                                 "Auth Token: " + loginResult.getAccessToken().getToken());*/
-
-                        requestData();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+//                        requestData();
                     }
 
                     @Override
@@ -77,10 +78,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                 });
-
-
-
-
     }
 
     public void requestData(){

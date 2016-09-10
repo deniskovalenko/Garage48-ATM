@@ -1,10 +1,11 @@
-package com.atm.atm;
+package com.atm.atm.activity;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.location.Location;
 import android.widget.Toast; //Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show();
 
+import com.atm.atm.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
