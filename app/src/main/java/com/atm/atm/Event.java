@@ -13,7 +13,7 @@ public class Event {
     LatLng latLng;//automatically sent as argument
     double lat;
     double lon;
-    long created_att;
+    long created_att; //datetime 2016-09-21:T21:08:31.z001zzz
     long end_datetime;
     String host_id;//automatically sent as argument
     String host_name;//from backend, automatically sent as argument
