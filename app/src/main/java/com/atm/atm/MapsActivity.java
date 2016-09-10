@@ -132,24 +132,24 @@ public class MapsActivity extends FragmentActivity implements
         );
         events.add(two);
 
-        /*for (Event e : events) {
-            BitmapDescriptor icon;
+        for (Event e : events) {
+            /*BitmapDescriptor icon;
             try {
                 URL url = new URL(e.img_url);
                 Bitmap bmp = BitmapFactory.decodeStream(url.openStream());
                 icon = BitmapDescriptorFactory.fromBitmap(bmp);
             } catch (Exception ex) {
                 icon = null;
-            }
+            }*/
 
                 Marker marker = mMap.addMarker(new MarkerOptions()
                                 .position(e.latLng)
                                 .title(e.description)
-                                .icon(icon)
+                                //.icon(icon)
                 );
 
                 markers.add(marker);
-        }*/
+        }
 
         if (mLastLocation != null) {
             double lat = mLastLocation.getLatitude();
