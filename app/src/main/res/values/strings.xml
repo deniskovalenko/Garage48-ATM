@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ATM</string>
     <string name="title_activity_maps">Map</string>
+    <string name="google_app_id">banded-setting-142921</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

@@ -1,8 +1,12 @@
 package com.atm.atm.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.location.Location;
+import android.util.Log;
 import android.widget.Toast; //Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show();
 
 import com.atm.atm.R;
@@ -12,11 +16,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
@@ -29,6 +41,9 @@ public class MapsActivity extends FragmentActivity implements
     Location mLastLocation;
     LocationRequest mLocationRequest;
     boolean mRequestingLocationUpdates = false;
+
+    List<Event> events = new ArrayList<>();
+    List<Marker> markers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +73,10 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     public void onConnected(Bundle connectionHint) {
-        do {
+
+        while (mLastLocation == null) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         }
-        while (mLastLocation == null);
 
         if (mMap != null) {
             double lat = mLastLocation.getLatitude();
@@ -88,7 +103,54 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        //TODO add markers per event
+
+        LatLng latLng_one = new LatLng(59.421987, 24.805142);
+        Location location_one = new Location("one");
+        location_one.setLatitude(latLng_one.latitude);
+        location_one.setLongitude(latLng_one.longitude);
+
+        LatLng latLng_two = new LatLng(59.423320, 24.793319);
+        Location location_two = new Location("two");
+        location_two.setLatitude(latLng_two.latitude);
+        location_two.setLongitude(latLng_two.longitude);
+
+        Event one = new Event(
+                "Join us and lets throw the greatest party ever!!",
+                latLng_one,
+                "100000090836482",
+                "Juku",
+                "http://kippure.com/img/party-venue-wicklow.jpg",
+                "#party"
+        );
+        events.add(one);
+        Event two = new Event(
+                "Bored silly at this birthday, send help please.",
+                latLng_one,
+                "10000009083612",
+                "Tim",
+                "http://naibuzz.com/wp-content/uploads/2014/08/boring-party.jpg",
+                "#killme"
+        );
+        events.add(two);
+
+        /*for (Event e : events) {
+            BitmapDescriptor icon;
+            try {
+                URL url = new URL(e.img_url);
+                Bitmap bmp = BitmapFactory.decodeStream(url.openStream());
+                icon = BitmapDescriptorFactory.fromBitmap(bmp);
+            } catch (Exception ex) {
+                icon = null;
+            }
+
+                Marker marker = mMap.addMarker(new MarkerOptions()
+                                .position(e.latLng)
+                                .title(e.description)
+                                .icon(icon)
+                );
+
+                markers.add(marker);
+        }*/
 
         if (mLastLocation != null) {
             double lat = mLastLocation.getLatitude();
@@ -96,8 +158,9 @@ public class MapsActivity extends FragmentActivity implements
             LatLng latLng = new LatLng(lat,lng);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
-
         mMap.setMyLocationEnabled(true);
+
+
     }
 
     @Override
@@ -112,7 +175,7 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {
-
+        print("Connection failed");
     }
 
     @Override
@@ -123,5 +186,10 @@ public class MapsActivity extends FragmentActivity implements
         mGoogleApiClient.disconnect();
 
         super.onDestroy();
+    }
+
+    private void print(String info) {
+        Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+        Log.i("MapsActivity", info);
     }
 }
