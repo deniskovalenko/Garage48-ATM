@@ -16,20 +16,21 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:id="@+id/imageButton"
+        android:id="@+id/closeButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/x2x"
         android:scaleType="fitEnd"
-        android:background="#00000000"/>
+        android:background="#00FFFFFF"
+        android:onClick="onCloseButtonClick"/>
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton"
+        android:layout_below="@+id/closeButton"
         android:layout_alignParentStart="true"
-        android:id="@+id/cameralayout">
+        android:id="@+id/cameraLayout">
 
         <ImageView
             android:layout_width="match_parent"
@@ -46,20 +47,26 @@
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"
             android:textSize="25dp"
-            android:textColor="@color/colorInactive"/>
+            android:textColor="@color/colorInactive"
+            android:paddingTop="20dp"
+            android:textAlignment="center"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="15dp" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/cameralayout">
+        android:layout_below="@id/cameraLayout">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/title">
+            android:id="@+id/title"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -74,14 +81,15 @@
                 android:hint="Title"
                 android:textColorHint="@color/colorInactive"
                 android:textColor="@color/colorInactive"/>
-
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linear2">
+            android:id="@+id/linear2"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -102,7 +110,9 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linear3">
+            android:id="@+id/linear3"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -123,7 +133,9 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linear4">
+            android:id="@+id/linear4"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -132,13 +144,24 @@
                 android:src="@drawable/note2x"/>
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText2"
                 android:textColor="@color/colorInactive"
                 android:textColorHint="@color/colorInactive"
                 android:hint="Description"/>
         </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/createButton"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/createbuttonwhite"
+            android:background="#00FFFFFF"
+            android:paddingTop="80dp"
+            android:onClick="onCreateButtonClick"/>
+
     </LinearLayout>
 
 </RelativeLayout>

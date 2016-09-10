@@ -5,8 +5,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class EventCreateActivity extends AppCompatActivity {
 
@@ -25,11 +27,13 @@ public class EventCreateActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-        LinearLayout rlayout = (LinearLayout) findViewById(R.id.cameralayout);
+        LinearLayout rlayout = (LinearLayout) findViewById(R.id.cameraLayout);
         rlayout.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                print("camera");
+                //TODO
                 //take pic
                 //crop
                 //upload
@@ -37,6 +41,19 @@ public class EventCreateActivity extends AppCompatActivity {
             }
 
         });
+
+    }
+
+    public void onCloseButtonClick(View view) {
+        print("close");
+    }
+    public void onCreateButtonClick (View view) {
+        //TODO create event
+        print("create");
+    }
+    private void print(String info) {
+        Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+        Log.i("MapsActivity", info);
     }
 
 }
