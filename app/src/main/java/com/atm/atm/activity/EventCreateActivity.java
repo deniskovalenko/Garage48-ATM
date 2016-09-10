@@ -1,4 +1,4 @@
-package com.atm.atm;
+package com.atm.atm.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.atm.atm.R;
 
 public class EventCreateActivity extends AppCompatActivity {
 
@@ -46,6 +48,7 @@ public class EventCreateActivity extends AppCompatActivity {
 
     public void onCloseButtonClick(View view) {
         print("close");
+        finish();
     }
     public void onCreateButtonClick (View view) {
         //TODO create event

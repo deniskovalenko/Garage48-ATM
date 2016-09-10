@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#4A545F"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.atm.atm.EventCreateActivity"
+    tools:context=".activity.EventCreateActivity"
     tools:showIn="@layout/activity_event_create">
 
     <ImageButton

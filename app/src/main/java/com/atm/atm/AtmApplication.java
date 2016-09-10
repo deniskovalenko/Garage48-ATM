@@ -17,7 +17,7 @@ public class AtmApplication extends Application {
     public void onCreate() {
         super.onCreate();
        // FacebookSdk.sdkInitialize(getApplicationContext());
-//        AppEventsLogger.activateApp(this);
+       //        AppEventsLogger.activateApp(this);
     }
 
     @Override

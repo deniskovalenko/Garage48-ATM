@@ -145,8 +145,8 @@ public class MapsActivity extends FragmentActivity implements
             }*/
 
                 Marker marker = mMap.addMarker(new MarkerOptions()
-                                .position(e.latLng)
-                                .title(e.description)
+                                .position(e.getLatLng())
+                                .title(e.getDescription())
                                 //.icon(icon)
                 );
 

@@ -24,7 +24,7 @@ public class Event {
     int participants_count;
     List<String> participants;
 
-    Event(String desc, LatLng location, String creator_id, String creator_name, String url, String tag) {
+    public Event(String desc, LatLng location, String creator_id, String creator_name, String url, String tag) {
         id = UUID.randomUUID().toString();
         description = desc;
         latLng = location;
@@ -40,5 +40,65 @@ public class Event {
         participants_count = 1;
         participants = new ArrayList<>();
         participants.add(host_id);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public long getCreated_att() {
+        return created_att;
+    }
+
+    public long getEnd_datetime() {
+        return end_datetime;
+    }
+
+    public String getHost_id() {
+        return host_id;
+    }
+
+    public String getHost_name() {
+        return host_name;
+    }
+
+    public String getHost_img_url() {
+        return host_img_url;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getParticipants_count() {
+        return participants_count;
+    }
+
+    public List<String> getParticipants() {
+        return participants;
     }
 }
