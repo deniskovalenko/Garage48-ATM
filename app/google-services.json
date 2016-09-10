@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "434525893646",
+    "project_id": "banded-setting-142921"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434525893646:android:abdceb7639c1575b",
+        "android_client_info": {
+          "package_name": "com.atm.atm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr0N0M91wpQz1O4_hqnp-UikDtNoKNZPA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
