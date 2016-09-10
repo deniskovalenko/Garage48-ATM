@@ -9,6 +9,7 @@ import android.location.Location;
 import android.util.Log;
 import android.widget.Toast; //Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show();
 
+import com.atm.atm.Event;
 import com.atm.atm.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
