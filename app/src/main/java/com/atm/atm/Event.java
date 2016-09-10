@@ -20,7 +20,7 @@ public class Event {
     String host_img_url;
     String img_url;//automatically uploaded by the backend, sent as argument
     String hashtag;//user input
-    int distance; //TODO recalculated upon location update Math.round(mLastLocation.distanceTo(location_one)
+    int distance; //automatically calculated and rounded in MapsActivity, sent as argument
     int participants_count;
     List<String> participants;
 
