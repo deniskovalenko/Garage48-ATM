@@ -31,7 +31,7 @@
             <ImageView
                 android:layout_width="42dp"
                 android:layout_height="27dp"
-                android:src="@drawable/people2"/>
+                android:src="@drawable/people2"/> <!--TODO android:scaleType=-->
 
             <TextView
                 android:id="@+id/event_number_attendants"

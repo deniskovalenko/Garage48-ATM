@@ -2,7 +2,11 @@ package com.atm.atm.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;

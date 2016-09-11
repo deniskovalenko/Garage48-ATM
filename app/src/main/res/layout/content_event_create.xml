@@ -22,15 +22,18 @@
         android:src="@drawable/x2x"
         android:scaleType="fitEnd"
         android:background="#00FFFFFF"
-        android:onClick="onCloseButtonClick"/>
+        android:onClick="onCloseButtonClick"
+        android:layout_alignParentRight="true" />
 
     <LinearLayout
         android:orientation="vertical"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_below="@+id/closeButton"
         android:layout_alignParentStart="true"
-        android:id="@+id/cameraLayout">
+        android:id="@+id/cameraLayout"
+        android:layout_alignParentLeft="true">
 
         <ImageView
             android:layout_width="match_parent"
@@ -65,8 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -88,8 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linear2"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -111,8 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linear3"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -134,8 +137,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linear4"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -159,7 +162,7 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/createbuttonwhite"
             android:background="#00FFFFFF"
-            android:paddingTop="80dp"
+            android:paddingTop="40dp"
             android:onClick="onCreateButtonClick"/>
 
     </LinearLayout>
