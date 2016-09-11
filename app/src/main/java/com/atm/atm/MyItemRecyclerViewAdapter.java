@@ -8,19 +8,39 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atm.atm.dummy.DummyContent.ATMEventViewModel;
+import com.atm.atm.model.EventFromBackend;
+import com.atm.atm.model.JoinEventBody;
+import com.facebook.AccessToken;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link ATMEventViewModel} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link OnJoinButtonPressed}.
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("https://atmapi.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    RestService restService = retrofit.create(RestService.class);
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -31,17 +51,44 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnJoinButtonPressed {
         // TODO: Update argument type and name
         void onListFragmentInteraction(ATMEventViewModel item);
     }
 
     private final List<ATMEventViewModel> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final OnJoinButtonPressed mListener;
 
-    public MyItemRecyclerViewAdapter(List<ATMEventViewModel> items, OnListFragmentInteractionListener listener) {
+    public MyItemRecyclerViewAdapter(List<ATMEventViewModel> items, OnJoinButtonPressed listener) {
         mValues = items;
         mListener = listener;
+    }
+
+    public MyItemRecyclerViewAdapter(String item, OnJoinButtonPressed listener, int dummy) {
+        Type listType = new TypeToken<ArrayList<EventFromBackend>>() {}.getType();
+        Gson gson = new Gson();
+        List<EventFromBackend> items = gson.fromJson(item, listType);
+
+        mValues = convert(items);
+        mListener = listener;
+    }
+
+    private List<ATMEventViewModel> convert(List<EventFromBackend> items) {
+        List<ATMEventViewModel> result = new ArrayList<ATMEventViewModel>();
+        for (EventFromBackend event : items) {
+            result.add(new ATMEventViewModel(event.get_id(),
+                    event.getHashtag(),
+                    event.getDescription(),
+                    Long.toString(Math.round(event.getDistance())),
+                    event.getParticipants_count(),
+                    event.getHost_name(),
+                    //todo timeleft,
+                    "5 minutes",
+                    "https://graph.facebook.com/" + event.getHost_id() + "/picture?width=128&height=128",
+                    event.getImg_url()
+                    ));
+        }
+        return result;
     }
 
     @Override
@@ -56,7 +103,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.descriptionText.setText(mValues.get(position).description);
         holder.titleText.setText(mValues.get(position).title);
@@ -64,19 +111,25 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.numberOfAttendants.setText(Integer.toString(mValues.get(position).numberOfAttendants));
         holder.timeLeft.setText(mValues.get(position).timeLeft);
         holder.name.setText(mValues.get(position).hostName);
-        loadImage(holder.eventPhoto, mValues.get(position).eventPhotoUrl);
-        loadImage(holder.hostPhoto, mValues.get(position).hosterPhotoUrl);
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.iminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+            Call<JoinEventBody> call = restService.joinEvent(mValues.get(position).id, new JoinEventBody((AccessToken.getCurrentAccessToken().getUserId())));
+                call.enqueue(new Callback<JoinEventBody>() {
+                    @Override
+                    public void onResponse(Call<JoinEventBody> call, Response<JoinEventBody> response) {
+                        mListener.onListFragmentInteraction(null);
+                    }
+
+                    @Override
+                    public void onFailure(Call<JoinEventBody> call, Throwable t) {
+
+                    }
+                });
             }
         });
+        loadImage(holder.eventPhoto, mValues.get(position).eventPhotoUrl);
+        loadImage(holder.hostPhoto, mValues.get(position).hosterPhotoUrl);
     }
 
     private void loadImage(ImageView imageView, String imageUrl) {
@@ -98,6 +151,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final ImageView hostPhoto;
         public final ImageView eventPhoto;
         public final TextView name;
+        public final Button iminButton;
 
         public ATMEventViewModel mItem;
 
@@ -112,6 +166,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             name = (TextView) view.findViewById(R.id.host_name);
             hostPhoto = (ImageView) view.findViewById(R.id.host_photo);
             eventPhoto = (ImageView) view.findViewById(R.id.event_photo);
+            iminButton = (Button) view.findViewById(R.id.button_join);
         }
 
         @Override
