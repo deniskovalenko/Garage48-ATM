@@ -196,7 +196,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         }
 
         protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
+            if (result != null) {
+                bmImage.setImageBitmap(result);
+            }
         }
     }
 
