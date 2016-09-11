@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements MyItemRecyclerVie
                 MyItemRecyclerViewAdapter adapter = null;
                 try {
                     adapter = new MyItemRecyclerViewAdapter(response.body().string(), MainActivity.this, 1);
-                } catch (IOException e) {
+                } catch (IOException | NullPointerException e) {
                     Toast.makeText(MainActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
                 }
                 rv.setAdapter(adapter);
