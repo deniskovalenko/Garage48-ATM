@@ -1,4 +1,4 @@
-package com.atm.atm;
+package com.atm.atm.model;
 
 import com.google.android.gms.maps.model.LatLng;
 

@@ -26,17 +26,6 @@ public class DummyContent {
     private static final int COUNT = 25;
 
     static {
-        ITEM_MAP.put("12345678", new ATMEventViewModel(
-                "12345678", "Jogging in the park",
-                "Join us for a small run", "300m", 6, "Derek J", "16 min",
-                "https://graph.facebook.com/1018860008231616/picture?width=128&height=128",
-                "http://www.footballtube.com/img/video/nice-c7-free-kick-goal.jpg"));
-        ITEM_MAP.put("87654321", new ATMEventViewModel(
-                "87654321", "Open dance class",
-                "Salsa is a hit this summer. Feel free to join to learn some!", "500 m", 18, "Anny M", "44 min",
-                "https://graph.facebook.com/1018860008231616/picture?width=128&height=128",
-                "http://www.footballtube.com/img/video/nice-c7-free-kick-goal.jpg"));
-
         ITEMS.add(new ATMEventViewModel(
                 "12345678", "Jogging in the park",
                 "Join us for a small run", "300m", 6, "Derek J", "16 min",
@@ -58,7 +47,6 @@ public class DummyContent {
                 "https://graph.facebook.com/1018860008231616/picture?width=128&height=128",
                 "https://thumbs.dreamstime.com/x/astronaut-floating-black-background-space-looking-earth-elements-image-furnished-nasa-30144346.jpg"));
     }
-
 
     /**
      * A dummy item representing a piece of title.
