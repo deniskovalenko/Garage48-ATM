@@ -80,7 +80,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:id="@+id/titleEditText"
                 android:hint="Title"
                 android:textColorHint="@color/colorInactive"
                 android:textColor="@color/colorInactive"/>
@@ -149,7 +149,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText2"
+                android:id="@+id/descriptionEditText"
                 android:textColor="@color/colorInactive"
                 android:textColorHint="@color/colorInactive"
                 android:hint="Description"/>

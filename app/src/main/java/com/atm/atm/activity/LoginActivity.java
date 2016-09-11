@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                                 "Auth Token: " + loginResult.getAccessToken().getToken());*/
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
-//                        requestData();
+                        requestData();
                     }
 
                     @Override
@@ -90,12 +90,10 @@ public class LoginActivity extends AppCompatActivity {
                     if(json != null){
                         String text = "<b>Name :</b> "+json.getString("name")+"<br><br><b>Email :</b> "+json.getString("email")+"<br><br><b>Profile link :</b> ";
                         textViewInfo.setText(Html.fromHtml(text));
-                        Glide.with(LoginActivity.this).load(json.getJSONObject("picture").getJSONObject("data").getString("url")).centerCrop().placeholder(com.atm.atm.R.mipmap.ic_launcher).crossFade().into(imageProfilePic);
-
-                        textViewLink.setText(json.getString("id"));
-                        Linkify.addLinks(textViewLink, Linkify.WEB_URLS);
-
-
+                       // Glide.with(LoginActivity.this).load(json.getJSONObject("picture").getJSONObject("data").getString("url")).centerCrop().placeholder(com.atm.atm.R.mipmap.ic_launcher).crossFade().into(imageProfilePic);
+                        getSharedPreferences("APPLICATION", MODE_APPEND).edit().putString("user_name", json.getString("name")).commit();
+                        //textViewLink.setText(json.getString("id"));
+                        //Linkify.addLinks(textViewLink, Linkify.WEB_URLS);
                     }
 
                 } catch (JSONException e) {
