@@ -74,7 +74,6 @@ public class EventCreateActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                print("camera");
 
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -92,7 +91,7 @@ public class EventCreateActivity extends AppCompatActivity {
                         String mCurrentPhotoPath = "file:" + imageFile.getAbsolutePath();
 
                     } catch (IOException ex) {
-                        print("image was not created");
+
                     }
                     print("imagepath is \"" + imageFile.getAbsolutePath() + "\"");
 

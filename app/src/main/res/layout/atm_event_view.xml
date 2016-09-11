@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="280dp"
-    android:padding="5dp">
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="#4A545F">
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:id="@+id/event_photo"
-    android:src="@drawable/image_stub"/>
+    android:src="@drawable/pic1"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="51dp">
+        android:layout_height="wrap_content">
         <TextView
             android:layout_marginTop="5dp"
             android:layout_width="0dp"
             android:layout_weight="8"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/event_header_text"
             android:textStyle="bold"
             android:textColor="#FFF"
-            android:textSize="24dp"
+            android:textSize="20dp"
             android:text="Beach party! #beach #party"/>
         <LinearLayout
             android:layout_width="0dp"
@@ -38,6 +39,7 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
+                android:textColor="@color/colorInactive"
                 android:text="6" />
         </LinearLayout>
 
@@ -45,10 +47,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="66dp">
+        android:layout_height="90dp">
         <TextView
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:textColor="#FFF"
             android:id="@+id/event_description_text"
             android:text="Come and see my brother doing cool stuff!"
@@ -60,7 +62,7 @@
             android:layout_toLeftOf="@+id/button_join" />
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:text="I'M IN"
             android:background="@drawable/button_shape"
             android:id="@+id/button_join"
@@ -126,7 +128,8 @@
             android:id="@+id/event_time_left"
             android:layout_alignTop="@+id/host_photo"
             android:layout_toLeftOf="@+id/button_join"
-            android:layout_toStartOf="@+id/button_join" />
+            android:layout_toStartOf="@+id/button_join"
+            android:textColor="@color/colorInactive"/>
     </RelativeLayout>
     <View
         android:layout_marginTop="3dp"
