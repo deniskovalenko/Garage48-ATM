@@ -53,7 +53,6 @@ public class EventCreateActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                print("camera");
 
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -71,17 +70,15 @@ public class EventCreateActivity extends AppCompatActivity {
                         String mCurrentPhotoPath = "file:" + imagepath.getAbsolutePath();
 
                     } catch (IOException ex) {
-                        print("image was not created");
+
                     }
-                    print("imagepath is \"" + imagepath.getAbsolutePath() + "\"");
+
 
                     if (imagepath != null) {
 
                         Uri photoURI = Uri.fromFile(imagepath); //FileProvider.getUriForFile(EventCreateActivity.this.getApplicationContext(), "com.example.android.fileprovider", imagepath);
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                        print("successful");
-
                     }
                 }
 
@@ -111,14 +108,12 @@ public class EventCreateActivity extends AppCompatActivity {
     }
 
     public void onCloseButtonClick(View view) {
-        print("close");
         finish();
     }
     public void onCreateButtonClick (View view) {
         //TODO create event
         //upload
         //get url
-        print("create");
     }
     
     private void print(String info) {
