@@ -19,10 +19,16 @@ import com.facebook.AccessToken;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.joda.time.DateTime;
+
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,17 +79,27 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         mListener = listener;
     }
 
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     private List<ATMEventViewModel> convert(List<EventFromBackend> items) {
         List<ATMEventViewModel> result = new ArrayList<ATMEventViewModel>();
         for (EventFromBackend event : items) {
+            long delta = new DateTime(event.getEnd_datetime()).getMillis() - new Date().getTime();
+            int minutes = new DateTime(new Date(delta)).getMinuteOfHour();
             result.add(new ATMEventViewModel(event.get_id(),
                     event.getHashtag(),
                     event.getDescription(),
-                    Long.toString(Math.round(event.getDistance())),
+                    round(event.getDistance(), 2) + " KM", // returns 200.35event.getDistance() + " KM",
                     event.getParticipants_count(),
                     event.getHost_name(),
                     //todo timeleft,
-                    "5 minutes",
+                    minutes + " min",
                     "https://graph.facebook.com/" + event.getHost_id() + "/picture?width=128&height=128",
                     event.getImg_url()
                     ));

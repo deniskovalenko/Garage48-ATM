@@ -150,7 +150,7 @@ public class EventCreateActivity extends AppCompatActivity {
 
         // create RequestBody instance from file
         final String name = getSharedPreferences("APPLICATION", MODE_APPEND).getString("user_name", "Denis Kovalenko");
-        final String hash = ((EditText) findViewById(R.id.descriptionEditText)).getText().toString();
+        final String hash = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
         final String desc =  ((EditText) findViewById(R.id.descriptionEditText)).getText().toString();
         new AsyncTask<Void, Void, Void>() {
             @Override

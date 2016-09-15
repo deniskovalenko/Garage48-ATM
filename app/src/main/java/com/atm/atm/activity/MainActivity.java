@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements MyItemRecyclerVie
         if (mLastLocation !=null) {
             call = restService.queryEvents(mLastLocation.getLatitude(), mLastLocation.getLongitude());
         } else {
-            call  = restService.queryEvents();
+            call  = restService.queryEvents(59.421468, 24.799241);
         }
         call.enqueue(new Callback<ResponseBody>() {
             @Override
